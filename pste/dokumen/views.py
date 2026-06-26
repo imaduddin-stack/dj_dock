@@ -171,6 +171,7 @@ def dokumen_lkps_by_tabel(request):
     kriteria_list = Kriteria.objects.all().order_by('nomor')
     selected_kriteria = None
     dokumen_list = []
+    kebijakan_dokumen = []
 
     if kriteria_id and tabel_referensi:
         try:
@@ -189,6 +190,9 @@ def dokumen_lkps_by_tabel(request):
                     Q(judul__icontains=query) | Q(deskripsi__icontains=query)
                 )
 
+            # Ambil dokumen kebijakan untuk panel terpisah
+            kebijakan_dokumen = dokumen_list.filter(jenis='kebijakan')
+
         except Kriteria.DoesNotExist:
             pass
 
@@ -202,6 +206,7 @@ def dokumen_lkps_by_tabel(request):
         'selected_kriteria': selected_kriteria,
         'tabel_referensi': tabel_referensi,
         'dokumen_list': dokumen_page,
+        'kebijakan_dokumen': kebijakan_dokumen,
         'query': query,
         'title': f'Dokumen LKPS - {tabel_referensi}',
     }

@@ -65,6 +65,57 @@
 </div>
 {% endif %}
 
+<!-- Daftar Dokumen Kebijakan -->
+{% if kebijakan_dokumen and selected_kriteria %}
+<div class="card mb-3">
+    <div class="card-header bg-light">
+        <h6 class="mb-0">
+            <i class="fa-solid fa-file-contract text-info"></i> Daftar Dokumen Kebijakan
+        </h6>
+    </div>
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover table-sm mb-0 dokumen-table">
+                <thead class="table-light">
+                    <tr>
+                        <th class="ps-3">Judul Dokumen</th>
+                        <th>Deskripsi</th>
+                        <th class="text-center">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for dokumen in kebijakan_dokumen %}
+                    <tr>
+                        <td class="ps-3">
+                            <strong class="text-dark">{{ dokumen.judul }}</strong>
+                        </td>
+                        <td>
+                            <small class="text-muted">{{ dokumen.deskripsi }}</small>
+                        </td>
+                        <td class="text-center">
+                            {% if dokumen.link_gdrive %}
+                            <div class="btn-group btn-group-sm" role="group">
+                                <a href="{{ dokumen.link_gdrive }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary" title="Lihat dokumen">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+                                <button type="button" class="btn btn-outline-secondary copy-link-btn" data-link="{{ dokumen.link_gdrive }}" title="Copy link">
+                                    <i class="fa-solid fa-copy"></i>
+                                </button>
+                            </div>
+                            {% else %}
+                            <span class="text-muted" title="Tidak ada link"><i class="fa-solid fa-ban"></i></span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- Daftar Semua Dokumen -->
 <div class="card">
     {% if dokumen_list %}
     <div class="card-body p-0">

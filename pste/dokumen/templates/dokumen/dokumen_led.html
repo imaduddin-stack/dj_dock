@@ -89,9 +89,14 @@
                                         </td>
                                         <td class="text-center">
                                             {% if dok.link_gdrive %}
-                                            <a href="{{ dok.link_gdrive }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-primary" title="Lihat dokumen">
-                                                <i class="fa-solid fa-eye"></i>
-                                            </a>
+                                            <div class="btn-group btn-group-sm" role="group">
+                                                <a href="{{ dok.link_gdrive }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary" title="Lihat dokumen">
+                                                    <i class="fa-solid fa-eye"></i>
+                                                </a>
+                                                <button type="button" class="btn btn-outline-secondary copy-link-btn" data-link="{{ dok.link_gdrive }}" title="Salin link">
+                                                    <i class="fa-solid fa-copy"></i>
+                                                </button>
+                                            </div>
                                             {% else %}
                                             <span class="text-muted" title="Tidak ada link"><i class="fa-solid fa-ban"></i></span>
                                             {% endif %}
@@ -119,4 +124,34 @@
     </div>
     {% endif %}
 </div>
+
+<script>
+document.querySelectorAll('.copy-link-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const link = this.getAttribute('data-link');
+
+        navigator.clipboard.writeText(link).then(() => {
+            // Visual feedback: change icon temporarily
+            const icon = this.querySelector('i');
+            const originalClass = icon.className;
+
+            this.classList.add('active');
+            icon.className = 'fa-solid fa-check';
+            this.style.borderColor = '#198754';
+            this.style.color = '#198754';
+
+            // Reset after 2 seconds
+            setTimeout(() => {
+                this.classList.remove('active');
+                icon.className = originalClass;
+                this.style.borderColor = '';
+                this.style.color = '';
+            }, 2000);
+        }).catch(() => {
+            alert('Gagal menyalin link');
+        });
+    });
+});
+</script>
 {% endblock %}
