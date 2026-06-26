@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Dashboard Arsip Mutu{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.3.2/dist/css/coreui.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    {% block extra_css %}{% endblock %}
+    <style>
+        body {
+            transition: margin-left 0.3s ease-in-out;
+            margin-left: 250px;
+        }
+        body.sidebar-minimized {
+            margin-left: 0;
+        }
+        .wrapper {
+            transition: margin-left 0.3s ease-in-out;
+            margin-left: 0;
+        }
+        .sidebar {
+            transition: transform 0.3s ease-in-out;
+        }
+        body.sidebar-minimized .sidebar {
+            transform: translateX(-100%);
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            z-index: 1000;
+        }
+        .sidebar-toggle-btn {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    {% include "dokumen/includes/sidebar.html" %}
+
+    <div class="wrapper d-flex flex-column min-vh-100 bg-light">
+
+        {% include "dokumen/includes/header.html" %}
+
+        <div class="body flex-grow-1 px-3">
+            <div class="container-lg">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+
+        {% include "dokumen/includes/footer.html" %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.3.2/dist/js/coreui.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleBtn = document.getElementById('sidebarToggle');
+            const body = document.body;
+
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', function() {
+                    body.classList.toggle('sidebar-minimized');
+                    localStorage.setItem('sidebarState', body.classList.contains('sidebar-minimized') ? 'hidden' : 'visible');
+                });
+            }
+
+            // Restore sidebar state dari localStorage
+            const savedState = localStorage.getItem('sidebarState');
+            if (savedState === 'hidden') {
+                body.classList.add('sidebar-minimized');
+            }
+        });
+    </script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

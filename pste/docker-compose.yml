@@ -1,0 +1,9 @@
+services:
+  web:
+    build: .
+    # Menggunakan volume agar perubahan code di host langsung terefleksi di container (hot-reload)
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    command: python manage.py runserver 0.0.0.0:8000

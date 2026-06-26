@@ -1,0 +1,20 @@
+[
+{
+    "model": "dokumen.ledkomponen",
+    "pk": 1,
+    "fields": {
+        "kriteria": 1,
+        "kode": "C1-1",
+        "deskripsi": "Kekhasan VMTS"
+    }
+},
+{
+    "model": "dokumen.ledkomponen",
+    "pk": 2,
+    "fields": {
+        "kriteria": 3,
+        "kode": "C3-1",
+        "deskripsi": "Pemutakhiran kurikulum"
+    }
+}
+]

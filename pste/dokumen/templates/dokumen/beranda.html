@@ -1,0 +1,200 @@
+{% extends "dokumen/base.html" %}
+{% load custom_filters %}
+
+{% block title %}Dashboard Arsip Mutu{% endblock %}
+
+{% block content %}
+<div class="row g-2 mb-4">
+    <div class="col-6 col-md-3">
+        <div class="card text-white bg-primary h-100">
+            <div class="card-body py-2 px-3 d-flex justify-content-between align-items-center">
+                <div>
+                    <div class="fs-6 fw-semibold">{{ total_dokumen }}</div>
+                    <div style="font-size: 0.75rem;">Total Dokumen</div>
+                </div>
+                <i class="fa-solid fa-file-lines fs-4"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-6 col-md-3">
+        <div class="card text-white bg-info h-100">
+            <div class="card-body py-2 px-3 d-flex justify-content-between align-items-center">
+                <div>
+                    <div class="fs-6 fw-semibold">{{ jml_kebijakan }}</div>
+                    <div style="font-size: 0.75rem;">Kebijakan</div>
+                </div>
+                <i class="fa-solid fa-scale-balanced fs-4"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-6 col-md-3">
+        <div class="card text-white bg-warning h-100">
+            <div class="card-body py-2 px-3 d-flex justify-content-between align-items-center">
+                <div>
+                    <div class="fs-6 fw-semibold">{{ jml_laporan }}</div>
+                    <div style="font-size: 0.75rem;">Laporan</div>
+                </div>
+                <i class="fa-solid fa-chart-line fs-4"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-6 col-md-3">
+        <div class="card text-white bg-success h-100">
+            <div class="card-body py-2 px-3 d-flex justify-content-between align-items-center">
+                <div>
+                    <div class="fs-6 fw-semibold">{{ jml_bukti }}</div>
+                    <div style="font-size: 0.75rem;">Bukti Kegiatan</div>
+                </div>
+                <i class="fa-solid fa-camera-retro fs-4"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-3 mb-4">
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-header">
+                <span>Distribusi Jenis Dokumen</span>
+            </div>
+            <div class="card-body">
+                <canvas id="jenisChart" height="300"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-header">
+                <span>Dokumen per Kriteria</span>
+            </div>
+            <div class="card-body">
+                <canvas id="kriteriaChart" height="300"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if kriteria_dengan_sedikit_dokumen %}
+<div class="card mb-4 border-warning">
+    <div class="card-header bg-warning-subtle">
+        <div class="d-flex justify-content-between align-items-center">
+            <span class="fw-semibold">
+                <i class="fa-solid fa-triangle-exclamation"></i> Kriteria Dengan Dokumen Sedikit
+            </span>
+            <span class="badge bg-warning">{{ kriteria_dengan_sedikit_dokumen|length }}</span>
+        </div>
+    </div>
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-sm mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th class="ps-3">Kriteria</th>
+                        <th>Nama Kriteria</th>
+                        <th class="text-center">Jumlah Dokumen</th>
+                        <th class="text-center">Progress</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in kriteria_dengan_sedikit_dokumen %}
+                    <tr>
+                        <td class="ps-3">
+                            <span class="fw-semibold">{{ item.kriteria.nomor }}</span>
+                        </td>
+                        <td>{{ item.kriteria.nama }}</td>
+                        <td class="text-center">
+                            <span class="badge {% if item.jumlah == 0 %}bg-danger{% else %}bg-warning{% endif %}">
+                                {{ item.jumlah }}
+                            </span>
+                        </td>
+                        <td class="text-center">
+                            <div class="progress" style="min-width: 120px;">
+                                <div class="progress-bar {% if item.jumlah == 0 %}bg-danger{% elif item.jumlah == 1 %}bg-warning{% else %}bg-info{% endif %}"
+                                     role="progressbar"
+                                     style="width: {{ item.jumlah|multiply:25 }}%"
+                                     aria-valuenow="{{ item.jumlah }}"
+                                     aria-valuemin="0"
+                                     aria-valuemax="4">
+                                    {{ item.jumlah }}/4
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Pie Chart - Jenis Dokumen
+    const jenisCtx = document.getElementById('jenisChart').getContext('2d');
+    const jenisColors = {{ jenis_colors|safe }};
+    new Chart(jenisCtx, {
+        type: 'doughnut',
+        data: {
+            labels: {{ jenis_labels|safe }},
+            datasets: [{
+                data: {{ jenis_data|safe }},
+                backgroundColor: jenisColors,
+                borderColor: '#fff',
+                borderWidth: 2,
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        padding: 15,
+                        font: { size: 11 }
+                    }
+                }
+            }
+        }
+    });
+
+    // Bar Chart - Dokumen per Kriteria
+    const kriteriaCtx = document.getElementById('kriteriaChart').getContext('2d');
+    new Chart(kriteriaCtx, {
+        type: 'bar',
+        data: {
+            labels: {{ kriteria_labels|safe }},
+            datasets: [{
+                label: 'Jumlah Dokumen',
+                data: {{ kriteria_data|safe }},
+                backgroundColor: '#0d6efd',
+                borderColor: '#0d6efd',
+                borderWidth: 1,
+                borderRadius: 4,
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            indexAxis: 'y',
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                x: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 1
+                    }
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}

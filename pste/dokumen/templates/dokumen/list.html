@@ -1,0 +1,25 @@
+{% extends 'dokumen/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title mb-0">Form Tambah Dokumen Baru</h2>
+        </div>
+        <div class="card-body">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-12">
+                        {{ form.as_p }}
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <!-- <button type="submit" class="btn btn-primary">Simpan Dokumen</button> -->
+                    <!-- <a href="{% url 'dokumen:list_dokumen' %}" class="btn btn-secondary ms-2">Batal</a> -->
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

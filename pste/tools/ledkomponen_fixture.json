@@ -1,0 +1,614 @@
+[
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 1,
+        "fields": {
+            "kriteria": 1,
+            "kode": "C1-1",
+            "deskripsi": "Kekhasan VMTS"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 2,
+        "fields": {
+            "kriteria": 1,
+            "kode": "C1-2",
+            "deskripsi": "Mekanisme penyusunan VMTS"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 3,
+        "fields": {
+            "kriteria": 1,
+            "kode": "C1-3",
+            "deskripsi": "Tingkat pemahaman dan pencapaian VMTS"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 4,
+        "fields": {
+            "kriteria": 2,
+            "kode": "C2-1",
+            "deskripsi": "Sistem tata pamong I"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 5,
+        "fields": {
+            "kriteria": 2,
+            "kode": "C2-2",
+            "deskripsi": "Sistem tata pamong II"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 6,
+        "fields": {
+            "kriteria": 2,
+            "kode": "C2-3",
+            "deskripsi": "Komitmen pimpinan dan kemampuan manajerial I"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 7,
+        "fields": {
+            "kriteria": 2,
+            "kode": "C2-4",
+            "deskripsi": "Komitmen pimpinan dan kemampuan manajerial II"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 8,
+        "fields": {
+            "kriteria": 2,
+            "kode": "C2-5",
+            "deskripsi": "Kerja sama I"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 9,
+        "fields": {
+            "kriteria": 2,
+            "kode": "C2-6",
+            "deskripsi": "Kerja sama II"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 10,
+        "fields": {
+            "kriteria": 2,
+            "kode": "C2-7",
+            "deskripsi": "Pelaksanaan kerja sama"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 11,
+        "fields": {
+            "kriteria": 2,
+            "kode": "C2-8",
+            "deskripsi": "Pengelolaan keuangan"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 12,
+        "fields": {
+            "kriteria": 2,
+            "kode": "C2-9",
+            "deskripsi": "Biaya operasional, dana penelitian dan PkM"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 13,
+        "fields": {
+            "kriteria": 2,
+            "kode": "C2-10",
+            "deskripsi": "Dana Penelitian"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 14,
+        "fields": {
+            "kriteria": 2,
+            "kode": "C2-11",
+            "deskripsi": "Dana PkM"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 15,
+        "fields": {
+            "kriteria": 3,
+            "kode": "C3-1",
+            "deskripsi": "Pemutakhiran kurikulum"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 16,
+        "fields": {
+            "kriteria": 3,
+            "kode": "C3-2",
+            "deskripsi": "Profil lulusan dan CPL I"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 17,
+        "fields": {
+            "kriteria": 3,
+            "kode": "C3-3",
+            "deskripsi": "Profil lulusan dan CPL II"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 18,
+        "fields": {
+            "kriteria": 3,
+            "kode": "C3-4",
+            "deskripsi": "Kesesuaian dan tinjauan CPL I"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 19,
+        "fields": {
+            "kriteria": 3,
+            "kode": "C3-5",
+            "deskripsi": "Kesesuaian dan tinjauan CPL II"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 20,
+        "fields": {
+            "kriteria": 3,
+            "kode": "C3-6",
+            "deskripsi": "Rencana Proses Pembelajaran (RPS) I"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 21,
+        "fields": {
+            "kriteria": 3,
+            "kode": "C3-7",
+            "deskripsi": "Rencana Proses Pembelajaran (RPS) II"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 22,
+        "fields": {
+            "kriteria": 3,
+            "kode": "C3-8",
+            "deskripsi": "Proses Pembelajaran I"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 23,
+        "fields": {
+            "kriteria": 3,
+            "kode": "C3-9",
+            "deskripsi": "Proses Pembelajaran II"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 24,
+        "fields": {
+            "kriteria": 3,
+            "kode": "C3-10",
+            "deskripsi": "Integrasi Penelitian dan PkM dalam pembelajaran. I"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 25,
+        "fields": {
+            "kriteria": 3,
+            "kode": "C3-11",
+            "deskripsi": "Integrasi Penelitian dan PkM dalam pembelajaran. II"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 26,
+        "fields": {
+            "kriteria": 3,
+            "kode": "C3-12",
+            "deskripsi": "Basic sciences dan matematika"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 27,
+        "fields": {
+            "kriteria": 3,
+            "kode": "C3-13",
+            "deskripsi": "Proyek rekayasa penciri bidang prodi (Capstone design)"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 28,
+        "fields": {
+            "kriteria": 3,
+            "kode": "C3-14",
+            "deskripsi": "Suasana Akademik I"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 29,
+        "fields": {
+            "kriteria": 3,
+            "kode": "C3-15",
+            "deskripsi": "Suasana Akademik II"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 30,
+        "fields": {
+            "kriteria": 3,
+            "kode": "C3-16",
+            "deskripsi": "Penelitian"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 31,
+        "fields": {
+            "kriteria": 3,
+            "kode": "C3-17",
+            "deskripsi": "keterlibatan mahasiswa dalam penelitian"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 32,
+        "fields": {
+            "kriteria": 3,
+            "kode": "C3-18",
+            "deskripsi": "PkM"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 33,
+        "fields": {
+            "kriteria": 3,
+            "kode": "C3-19",
+            "deskripsi": "Keterlibatan mahasiswa dalam pkm "
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 34,
+        "fields": {
+            "kriteria": 4,
+            "kode": "C4-1",
+            "deskripsi": "Profil Dosen"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 35,
+        "fields": {
+            "kriteria": 4,
+            "kode": "C4-2",
+            "deskripsi": "Kualifikasi akademik"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 36,
+        "fields": {
+            "kriteria": 4,
+            "kode": "C4-3",
+            "deskripsi": "jabatan akademik"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 37,
+        "fields": {
+            "kriteria": 4,
+            "kode": "C4-4",
+            "deskripsi": "Tenaga Kependidikan"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 38,
+        "fields": {
+            "kriteria": 4,
+            "kode": "C4-5",
+            "deskripsi": "Beban kerja DTPS"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 39,
+        "fields": {
+            "kriteria": 4,
+            "kode": "C4-6",
+            "deskripsi": "Kinerja DTPS 1"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 40,
+        "fields": {
+            "kriteria": 4,
+            "kode": "C4-7",
+            "deskripsi": "Kinerja DTPS 2"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 41,
+        "fields": {
+            "kriteria": 4,
+            "kode": "C4-8",
+            "deskripsi": "Kinerja DTPS 3"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 42,
+        "fields": {
+            "kriteria": 4,
+            "kode": "C4-9",
+            "deskripsi": "Kinerja DTPS 4"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 43,
+        "fields": {
+            "kriteria": 4,
+            "kode": "C4-10",
+            "deskripsi": "Kinerja DTPS 5"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 44,
+        "fields": {
+            "kriteria": 4,
+            "kode": "C4-11",
+            "deskripsi": "Kinerja DTPS 6"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 45,
+        "fields": {
+            "kriteria": 4,
+            "kode": "C4-12",
+            "deskripsi": "Kinerja DTPS 7"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 46,
+        "fields": {
+            "kriteria": 5,
+            "kode": "C5-1",
+            "deskripsi": "Sarana dan Prasarana I"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 47,
+        "fields": {
+            "kriteria": 5,
+            "kode": "C5-2",
+            "deskripsi": "Sarana dan Prasarana II"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 48,
+        "fields": {
+            "kriteria": 5,
+            "kode": "C5-3",
+            "deskripsi": "Keselamatan Kesehatan Kerja dan Lingkungan (K3L)"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 49,
+        "fields": {
+            "kriteria": 6,
+            "kode": "C6-1",
+            "deskripsi": "Rasio Mahasiswa"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 50,
+        "fields": {
+            "kriteria": 6,
+            "kode": "C6-2",
+            "deskripsi": "Mahasiswa asing"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 51,
+        "fields": {
+            "kriteria": 6,
+            "kode": "C6-3",
+            "deskripsi": "IPK lulusan"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 52,
+        "fields": {
+            "kriteria": 6,
+            "kode": "C6-4",
+            "deskripsi": "Prestasi akademik dan nonakademik mahasiswa I"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 53,
+        "fields": {
+            "kriteria": 6,
+            "kode": "C6-5",
+            "deskripsi": "Prestasi akademik dan nonakademik mahasiswa II"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 54,
+        "fields": {
+            "kriteria": 6,
+            "kode": "C6-6",
+            "deskripsi": "Masa studi"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 55,
+        "fields": {
+            "kriteria": 6,
+            "kode": "C6-7",
+            "deskripsi": "Persentase lulusan Tepat waktu"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 56,
+        "fields": {
+            "kriteria": 6,
+            "kode": "C6-8",
+            "deskripsi": "Publikasi ilmiah mahasiswa"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 57,
+        "fields": {
+            "kriteria": 6,
+            "kode": "C6-9",
+            "deskripsi": "Luaran penelitian dan PkM Mahasiswa"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 58,
+        "fields": {
+            "kriteria": 6,
+            "kode": "C6-10",
+            "deskripsi": "Tracer Study"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 59,
+        "fields": {
+            "kriteria": 6,
+            "kode": "C6-11",
+            "deskripsi": "Waktu tunggu"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 60,
+        "fields": {
+            "kriteria": 6,
+            "kode": "C6-12",
+            "deskripsi": "Kesesuaian bidang kerja"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 61,
+        "fields": {
+            "kriteria": 6,
+            "kode": "C6-13",
+            "deskripsi": "Tingkat dan ukuran tempat kerja lulusan"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 62,
+        "fields": {
+            "kriteria": 6,
+            "kode": "C6-14",
+            "deskripsi": "Tingkat kepuasan pengguna lulusan"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 63,
+        "fields": {
+            "kriteria": 7,
+            "kode": "C7-1",
+            "deskripsi": "Keberadaan unit penjaminan mutu dan komitmen pimpinan "
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 64,
+        "fields": {
+            "kriteria": 7,
+            "kode": "C7-2",
+            "deskripsi": "Ketersediaan perangkat SPMI dan pengakuan mutu eksternal"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 65,
+        "fields": {
+            "kriteria": 7,
+            "kode": "C7-3",
+            "deskripsi": "Indikator Kinerja Tambahan (IKT)"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 66,
+        "fields": {
+            "kriteria": 7,
+            "kode": "C7-4",
+            "deskripsi": "Keterlaksanaan Penjaminan Mutu dan Audit Mutu Internal"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 67,
+        "fields": {
+            "kriteria": 7,
+            "kode": "C7-5",
+            "deskripsi": "Evaluasi Capaian Kinerja"
+        }
+    },
+    {
+        "model": "dokumen.ledkomponen",
+        "pk": 68,
+        "fields": {
+            "kriteria": 7,
+            "kode": "C7-6",
+            "deskripsi": "Kepuasan Pemangku Kepentingan"
+        }
+    }
+]

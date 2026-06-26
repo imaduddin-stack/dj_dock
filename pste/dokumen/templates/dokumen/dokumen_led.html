@@ -1,0 +1,122 @@
+{% extends "dokumen/base.html" %}
+
+{% block title %}Dokumen LED - Arsip Mutu{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center">
+            <h4 class="mb-0">
+                <i class="fa-solid fa-list-check text-primary"></i> Daftar Dokumen LED
+            </h4>
+            <a href="{% url 'dokumen:add_dokumen' %}" class="btn btn-sm btn-primary">
+                <i class="fa-solid fa-plus"></i> Tambah Dokumen
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <form method="get" class="d-flex gap-2">
+            <input type="text" name="q" class="form-control form-control-sm" placeholder="Cari berdasarkan judul, deskripsi, atau komponen..." value="{{ query }}">
+            <button type="submit" class="btn btn-sm btn-outline-secondary">
+                <i class="fa-solid fa-magnifying-glass"></i> Cari
+            </button>
+            {% if query %}
+            <a href="{% url 'dokumen:dokumen_led' %}" class="btn btn-sm btn-outline-secondary">
+                <i class="fa-solid fa-times"></i> Reset
+            </a>
+            {% endif %}
+        </form>
+    </div>
+
+    {% if kriteria_dengan_dokumen %}
+    <div class="card-body p-0">
+        <div class="accordion" id="accordionLED">
+            {% for item in kriteria_dengan_dokumen %}
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading{{ item.kriteria.id }}">
+                    <button class="accordion-button {% if forloop.first %}{% else %}collapsed{% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ item.kriteria.id }}" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" aria-controls="collapse{{ item.kriteria.id }}">
+                        <span class="badge bg-primary me-2">{{ item.kriteria.nomor }}</span>
+                        <strong>{{ item.kriteria.nama }}</strong>
+                        <span class="ms-auto text-muted me-3" style="font-size: 0.875rem;">{{ item.dokumen|length }} dokumen</span>
+                    </button>
+                </h2>
+                <div id="collapse{{ item.kriteria.id }}" class="accordion-collapse collapse {% if forloop.first %}show{% endif %}" aria-labelledby="heading{{ item.kriteria.id }}" data-bs-parent="#accordionLED">
+                    <div class="accordion-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-sm table-hover mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th class="ps-3">Judul Dokumen</th>
+                                        <th>Jenis</th>
+                                        <th>Deskripsi</th>
+                                        <th>Komponen</th>
+                                        <th class="text-center">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for dok in item.dokumen %}
+                                    <tr>
+                                        <td class="ps-3">
+                                            <strong class="text-dark">{{ dok.judul }}</strong>
+                                        </td>
+                                        <td>
+                                            {% if dok.jenis == 'kebijakan' %}
+                                                <span class="badge bg-info">{{ dok.get_jenis_display }}</span>
+                                            {% elif dok.jenis == 'laporan' %}
+                                                <span class="badge bg-warning text-dark">{{ dok.get_jenis_display }}</span>
+                                            {% elif dok.jenis == 'bukti_kegiatan' %}
+                                                <span class="badge bg-success">{{ dok.get_jenis_display }}</span>
+                                            {% else %}
+                                                <span class="badge bg-secondary">{{ dok.get_jenis_display }}</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <small class="text-muted">{{ dok.deskripsi|truncatewords:10 }}</small>
+                                        </td>
+                                        <td>
+                                            <div style="max-width: 250px;">
+                                                {% for led in dok.dipakai_led.all %}
+                                                    {% if led.kriteria_id == item.kriteria.id %}
+                                                        <span class="badge bg-light text-dark me-1 mb-1">
+                                                            {{ led.kode }}
+                                                        </span>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            {% if dok.link_gdrive %}
+                                            <a href="{{ dok.link_gdrive }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-primary" title="Lihat dokumen">
+                                                <i class="fa-solid fa-eye"></i>
+                                            </a>
+                                            {% else %}
+                                            <span class="text-muted" title="Tidak ada link"><i class="fa-solid fa-ban"></i></span>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% else %}
+    <div class="card-body">
+        <p class="text-muted mb-0 text-center">
+            {% if query %}
+                Tidak ada dokumen LED yang cocok dengan pencarian "{{ query }}".
+            {% else %}
+                Belum ada dokumen yang terkait dengan LED.
+            {% endif %}
+        </p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

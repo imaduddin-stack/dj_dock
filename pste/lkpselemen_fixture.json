@@ -1,0 +1,452 @@
+[
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 3,
+    "fields": {
+        "kriteria": 1,
+        "tabel_referensi": "1",
+        "deskripsi": "Tabel 1 Visi Misi Tujuan Strategi PT dan UPPS serta Visi Keilmuan Program Studi"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 4,
+    "fields": {
+        "kriteria": 2,
+        "tabel_referensi": "2a1",
+        "deskripsi": "Tabel 1 Kerjasama Tridharma Perguruan Tinggi - Pendidikan"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 5,
+    "fields": {
+        "kriteria": 2,
+        "tabel_referensi": "2a2",
+        "deskripsi": "Tabel 1 Kerjasama Tridharma Perguruan Tinggi - Penelitian"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 6,
+    "fields": {
+        "kriteria": 2,
+        "tabel_referensi": "2a3",
+        "deskripsi": "Tabel 1 Kerjasama Tridharma Perguruan Tinggi - Pengabdian kepada Masyarakat"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 7,
+    "fields": {
+        "kriteria": 2,
+        "tabel_referensi": "2b",
+        "deskripsi": "Tabel 2.b) Penggunaan Dana"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 8,
+    "fields": {
+        "kriteria": 3,
+        "tabel_referensi": "3a1",
+        "deskripsi": "Tabel 3.a.1) Kurikulum dan Rencana Pembelajaran"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 9,
+    "fields": {
+        "kriteria": 3,
+        "tabel_referensi": "3a2",
+        "deskripsi": "Tabel 3.a.2) Mata Kuliah dan Dokumen Pembelajaran"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 10,
+    "fields": {
+        "kriteria": 3,
+        "tabel_referensi": "3a3",
+        "deskripsi": "Tabel 3.a.3) Integrasi Kegiatan Penelitian/PkM dalam Pembelajaran"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 11,
+    "fields": {
+        "kriteria": 3,
+        "tabel_referensi": "3a4",
+        "deskripsi": "Tabel 3.a.4) Mata Kuliah Basic Science dan Matematika dalam Proses Pembelajaran"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 12,
+    "fields": {
+        "kriteria": 3,
+        "tabel_referensi": "3a5",
+        "deskripsi": "Tabel 3.a.5) Capstone Design dalam Proses Pembelajaran"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 13,
+    "fields": {
+        "kriteria": 3,
+        "tabel_referensi": "3b",
+        "deskripsi": "Tabel 3.b) Penelitian DTPS"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 14,
+    "fields": {
+        "kriteria": 3,
+        "tabel_referensi": "3c",
+        "deskripsi": "Tabel 3.c) Pengabdian kepada Masyarakat DTPS"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 15,
+    "fields": {
+        "kriteria": 4,
+        "tabel_referensi": "4a",
+        "deskripsi": "Tabel 4.a) Profil Dosen"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 16,
+    "fields": {
+        "kriteria": 4,
+        "tabel_referensi": "4b",
+        "deskripsi": "Tabel 4.b) Data Tenaga Kependidikan Laboran / Teknisi / Administrator Sistem"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 17,
+    "fields": {
+        "kriteria": 4,
+        "tabel_referensi": "4c",
+        "deskripsi": "Tabel 4.c) Beban Kerja (BK) Dosen Tetap Perguruan Tinggi"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 18,
+    "fields": {
+        "kriteria": 4,
+        "tabel_referensi": "4d",
+        "deskripsi": "Tabel 4.d) Publikasi Ilmiah DTPS"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 19,
+    "fields": {
+        "kriteria": 4,
+        "tabel_referensi": "4e",
+        "deskripsi": "Tabel 4.e) Pagelaran/Pameran/Presentasi/Publikasi Ilmiah DTPS"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 20,
+    "fields": {
+        "kriteria": 4,
+        "tabel_referensi": "4f-1",
+        "deskripsi": "Tabel 4.f) Luaran Penelitian dan PkM oleh DTPS / DTPSPPI - HKI (Paten, Paten Sederhana)"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 21,
+    "fields": {
+        "kriteria": 4,
+        "tabel_referensi": "4f-2",
+        "deskripsi": "Tabel 4.f) Luaran Penelitian dan PkM oleh DTPS / DTPSPPI - HKI (Hak Cipta, Desain Produk Industri, dll.)"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 22,
+    "fields": {
+        "kriteria": 4,
+        "tabel_referensi": "4f-3",
+        "deskripsi": "Tabel 4.f) Luaran Penelitian dan PkM oleh DTPS / DTPSPPI - Teknologi Tepat Guna, Produk Terstandarisasi, Produk Tersertifikasi)"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 23,
+    "fields": {
+        "kriteria": 4,
+        "tabel_referensi": "4f-4",
+        "deskripsi": "Tabel 4.f) Luaran Penelitian dan PkM oleh DTPS / DTPSPPI - Buku ber-ISBN, Book Chapter"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 24,
+    "fields": {
+        "kriteria": 4,
+        "tabel_referensi": "4g",
+        "deskripsi": "Tabel 4.g) Produk/Jasa DTPS yang Diadopsi oleh Industri/Masyarakat"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 25,
+    "fields": {
+        "kriteria": 4,
+        "tabel_referensi": "4h",
+        "deskripsi": "Tabel 4.h) Kinerja DTPS Dalam Mendukung Keunggulan Kompetitif"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 26,
+    "fields": {
+        "kriteria": 4,
+        "tabel_referensi": "4i",
+        "deskripsi": "Tabel 4.i) Karya Ilmiah DTPS yang Disitasi"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 27,
+    "fields": {
+        "kriteria": 4,
+        "tabel_referensi": "4j",
+        "deskripsi": "Tabel 4.j) Pengakuan/Rekognisi Dosen"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 28,
+    "fields": {
+        "kriteria": 4,
+        "tabel_referensi": "4k",
+        "deskripsi": "Tabel 4.k) Pembimbing Lapangan"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 29,
+    "fields": {
+        "kriteria": 5,
+        "tabel_referensi": "5a",
+        "deskripsi": "Tabel 5.a) Prasarana dan Peralatan Utama Ruang Kelas/Ruang Diskusi / Laboratorium di UPPS yang digunakan oleh PS yang Diakreditasi"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 30,
+    "fields": {
+        "kriteria": 5,
+        "tabel_referensi": "5b",
+        "deskripsi": "Tabel 5.b) Dokumen K3L di UPPS"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 31,
+    "fields": {
+        "kriteria": 5,
+        "tabel_referensi": "5c",
+        "deskripsi": "Tabel 5.c) Fasilitas K3L di UPPS"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 32,
+    "fields": {
+        "kriteria": 6,
+        "tabel_referensi": "6a",
+        "deskripsi": "Tabel 6.a) Jumlah Mahasiswa (Reguler & Asing)"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 33,
+    "fields": {
+        "kriteria": 6,
+        "tabel_referensi": "6b",
+        "deskripsi": "Tabel 6.b) IPK Lulusan"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 34,
+    "fields": {
+        "kriteria": 6,
+        "tabel_referensi": "6c1",
+        "deskripsi": "Tabel 6.c.1) Prestasi Akademik Mahasiswa"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 35,
+    "fields": {
+        "kriteria": 6,
+        "tabel_referensi": "6c2",
+        "deskripsi": "Tabel 6.c.2) Prestasi Non-akademik Mahasiswa"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 36,
+    "fields": {
+        "kriteria": 6,
+        "tabel_referensi": "6d",
+        "deskripsi": "Tabel 6.d) Masa Studi Lulusan Program Studi"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 37,
+    "fields": {
+        "kriteria": 6,
+        "tabel_referensi": "6e1",
+        "deskripsi": "Tabel 6.e.1) Publikasi Ilmiah Mahasiswa"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 38,
+    "fields": {
+        "kriteria": 6,
+        "tabel_referensi": "6e2",
+        "deskripsi": "Tabel 6.e.2) Pagelaran/Pameran/Presentasi/Publikasi Ilmiah Mahasiswa"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 39,
+    "fields": {
+        "kriteria": 6,
+        "tabel_referensi": "6e3-1",
+        "deskripsi": "Tabel 6.e.3) Luaran Penelitian yang Dihasilkan Mahasiswa - HKI (Paten, Paten Sederhana)"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 40,
+    "fields": {
+        "kriteria": 6,
+        "tabel_referensi": "6e3-2",
+        "deskripsi": "Tabel 6.e.3) Luaran Penelitian yang Dihasilkan Mahasiswa - HKI (Hak Cipta, Desain Produk Industri, dll.)"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 41,
+    "fields": {
+        "kriteria": 6,
+        "tabel_referensi": "6e3-3",
+        "deskripsi": "Tabel 6.e.3) Luaran Penelitian yang Dihasilkan Mahasiswa -Teknologi Tepat Guna, Produk"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 42,
+    "fields": {
+        "kriteria": 6,
+        "tabel_referensi": "6e3-4",
+        "deskripsi": "Tabel 6.e.3) Luaran Penelitian yang Dihasilkan Mahasiswa - Buku ber-ISBN, Book Chapter"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 43,
+    "fields": {
+        "kriteria": 6,
+        "tabel_referensi": "6e4",
+        "deskripsi": "Tabel 6.e.4) Produk/Jasa yang Dihasilkan Mahasiswa yang Diadopsi oleh Industri/Masyarakat"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 44,
+    "fields": {
+        "kriteria": 6,
+        "tabel_referensi": "6f1",
+        "deskripsi": "Tabel 6.f.1) Waktu Tunggu Lulusan"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 45,
+    "fields": {
+        "kriteria": 6,
+        "tabel_referensi": "6f2",
+        "deskripsi": "Tabel 6.f.2) Kesesuaian Bidang Kerja Lulusan"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 46,
+    "fields": {
+        "kriteria": 6,
+        "tabel_referensi": "6g1",
+        "deskripsi": "Tabel 6.g.1) Tempat Kerja Lulusan"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 47,
+    "fields": {
+        "kriteria": 6,
+        "tabel_referensi": "6g2",
+        "deskripsi": "Tabel 6.g.2) Kepuasan Pengguna Lulusan"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 48,
+    "fields": {
+        "kriteria": 6,
+        "tabel_referensi": "6h1",
+        "deskripsi": "Tabel 6.h.1) Penelitian DTPS yang Melibatkan Mahasiswa"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 49,
+    "fields": {
+        "kriteria": 6,
+        "tabel_referensi": "6h2",
+        "deskripsi": "Tabel 6.h.2) Penelitian DTPS yang Menjadi Rujukan Tema Tesis/Disertasi"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 50,
+    "fields": {
+        "kriteria": 6,
+        "tabel_referensi": "6i",
+        "deskripsi": "Tabel 6.i PkM DTPS yang Melibatkan Mahasiswa"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 51,
+    "fields": {
+        "kriteria": 7,
+        "tabel_referensi": "7a",
+        "deskripsi": "Tabel 7.a) Ketersediaan Dokumen/Buku Sistem Penjaminan Mutu Internal"
+    }
+},
+{
+    "model": "dokumen.lkpselemen",
+    "pk": 52,
+    "fields": {
+        "kriteria": 7,
+        "tabel_referensi": "7b",
+        "deskripsi": "Tabel 7.a) Ketersediaan Dokumen/Buku Sistem Penjaminan Mutu Internal"
+    }
+}
+]

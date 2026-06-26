@@ -1,0 +1,88 @@
+{% extends "dokumen/base.html" %}
+
+{% block title %}Dokumen LKPS - Arsip Mutu{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center">
+            <h4 class="mb-0">
+                <i class="fa-solid fa-table text-success"></i> Dokumen LKPS
+            </h4>
+            <a href="{% url 'dokumen:add_dokumen' %}" class="btn btn-sm btn-primary">
+                <i class="fa-solid fa-plus"></i> Tambah Dokumen
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header bg-light">
+        <div class="row">
+            <div class="col-md-6">
+                <label class="form-label mb-2"><strong>Pilih Kriteria:</strong></label>
+                <form method="get" class="d-flex gap-2">
+                    <select name="kriteria" class="form-select form-select-sm" onchange="this.form.submit()">
+                        <option value="">-- Semua Kriteria --</option>
+                        {% for kriteria in kriteria_list %}
+                        <option value="{{ kriteria.id }}" {% if selected_kriteria.id == kriteria.id %}selected{% endif %}>
+                            {{ kriteria.nomor }} - {{ kriteria.nama }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {% if selected_kriteria and tabel_lkps_list %}
+    <div class="card-body">
+        <div class="alert alert-info mb-4">
+            <i class="fa-solid fa-circle-info"></i>
+            Menampilkan tabel LKPS untuk kriteria: <strong>{{ selected_kriteria.nomor }} - {{ selected_kriteria.nama }}</strong>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-hover table-striped">
+                <thead class="table-light">
+                    <tr>
+                        <th class="ps-3">Tabel LKPS</th>
+                        <th>Deskripsi</th>
+                        <th class="text-center">Jumlah Dokumen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for tabel in tabel_lkps_list %}
+                    <tr class="align-middle">
+                        <td class="ps-3">
+                            <strong class="text-dark">{{ tabel.tabel_referensi }}</strong>
+                        </td>
+                        <td>
+                            <small class="text-muted">{{ tabel.deskripsi|truncatewords:15 }}</small>
+                        </td>
+                        <td class="text-center">
+                            <a href="{% url 'dokumen:dokumen_lkps_by_tabel' %}?kriteria={{ selected_kriteria.id }}&tabel={{ tabel.tabel_referensi }}" class="badge {% if tabel.jumlah_dokumen > 0 %}bg-success{% else %}bg-danger{% endif %}" style="cursor: pointer; text-decoration: none;">
+                                {{ tabel.jumlah_dokumen }}
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% elif selected_kriteria %}
+    <div class="card-body">
+        <p class="text-muted mb-0 text-center">
+            Tidak ada tabel LKPS untuk kriteria <strong>{{ selected_kriteria.nomor }} - {{ selected_kriteria.nama }}</strong>.
+        </p>
+    </div>
+    {% else %}
+    <div class="card-body">
+        <p class="text-muted mb-0 text-center">
+            Silakan pilih kriteria untuk melihat tabel LKPS yang terkait.
+        </p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

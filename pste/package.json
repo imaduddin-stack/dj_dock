@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "json2excel": "^1.2.0"
+  }
+}

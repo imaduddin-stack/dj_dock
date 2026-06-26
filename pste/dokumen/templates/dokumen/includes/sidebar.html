@@ -1,0 +1,60 @@
+<div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
+    <div class="sidebar-brand d-none d-md-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Arsip Mutu</h5>
+    </div>
+    <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'dokumen:beranda' %}">
+                <i class="nav-icon fa-solid fa-gauge"></i> Beranda
+            </a>
+        </li>
+        <li class="nav-title">Manajemen Data</li>
+        <li class="nav-item nav-group-divider"></li>
+        <li class="nav-item">
+            <a class="nav-link nav-group-toggle" href="#" role="button" aria-expanded="false">
+                <i class="nav-icon fa-solid fa-folder-open"></i> Dokumen
+                <span class="ms-auto"><i class="fa-solid fa-chevron-down"></i></span>
+            </a>
+            <ul class="nav-group-items" style="display: none;">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'dokumen:dokumen_led' %}" style="padding-left: 2rem;">
+                        <i class="nav-icon fa-solid fa-list-check"></i> Dokumen LED
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'dokumen:dokumen_lkps' %}" style="padding-left: 2rem;">
+                        <i class="nav-icon fa-solid fa-table"></i> Dokumen LKPS
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <style>
+        .nav-group-toggle { cursor: pointer; }
+        .nav-group-toggle:hover { text-decoration: none; }
+        .nav-group-toggle i:last-child { transition: transform 0.3s ease; }
+        .nav-group-toggle.show i:last-child { transform: rotate(180deg); }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggles = document.querySelectorAll('.nav-group-toggle');
+            toggles.forEach(toggle => {
+                toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const group = this.nextElementSibling;
+                    const isVisible = group.style.display !== 'none';
+                    group.style.display = isVisible ? 'none' : 'block';
+                    this.classList.toggle('show');
+                    localStorage.setItem(this.textContent.trim(), isVisible ? 'hidden' : 'visible');
+                });
+
+                const group = toggle.nextElementSibling;
+                const savedState = localStorage.getItem(toggle.textContent.trim());
+                if (savedState === 'visible') {
+                    group.style.display = 'block';
+                    toggle.classList.add('show');
+                }
+            });
+        });
+    </script>
+</div>
