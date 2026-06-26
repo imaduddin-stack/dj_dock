@@ -46,16 +46,30 @@ def beranda(request):
             kriteria_labels.append(kriteria.nomor)
             kriteria_data.append(total_for_kriteria)
 
-    # Data untuk highlight: Kriteria dengan dokumen sedikit (< 3)
-    kriteria_dengan_sedikit_dokumen = []
-    for kriteria in kriteria_list:
-        total_for_kriteria = len(set(list(Dokumen.objects.filter(dipakai_led__kriteria=kriteria).values_list('id', flat=True)) +
-                                      list(Dokumen.objects.filter(lkps_elemen__lkps_elemen__kriteria=kriteria).values_list('id', flat=True))))
-        if total_for_kriteria < 3:
-            kriteria_dengan_sedikit_dokumen.append({
-                'kriteria': kriteria,
-                'jumlah': total_for_kriteria,
-            })
+    # Data untuk highlight: Top 10 Tabel LKPS dengan dokumen paling sedikit
+    tabel_lkps_dengan_dokumentasi = []
+    tabel_refs = LkpsElemen.objects.values('tabel_referensi').distinct()
+
+    for tabel in tabel_refs:
+        tabel_ref = tabel['tabel_referensi']
+        jumlah_dokumen = DokumenLkps.objects.filter(
+            lkps_elemen__tabel_referensi=tabel_ref
+        ).values('dokumen').distinct().count()
+
+        # Ambil deskripsi pertama untuk tabel ini
+        sample_elemen = LkpsElemen.objects.filter(tabel_referensi=tabel_ref).first()
+
+        tabel_lkps_dengan_dokumentasi.append({
+            'tabel_referensi': tabel_ref,
+            'jumlah': jumlah_dokumen,
+            'deskripsi': sample_elemen.deskripsi if sample_elemen else '',
+        })
+
+    # Urutkan berdasarkan jumlah dokumen (terendah ke tertinggi) dan ambil top 10
+    tabel_dengan_sedikit_dokumen = sorted(tabel_lkps_dengan_dokumentasi, key=lambda x: x['jumlah'])[:10]
+
+    # Dokumen terbaru (10 dokumen)
+    dokumen_terbaru = Dokumen.objects.all().order_by('-created_at')[:10]
 
     # Mengambil query pencarian
     query = request.GET.get('q', '')
@@ -79,13 +93,14 @@ def beranda(request):
         'jml_laporan': jml_laporan,
         'jml_bukti': jml_bukti,
         'dokumen_list': dokumen_list,
+        'dokumen_terbaru': dokumen_terbaru,
         'query': query,
         'jenis_labels': json.dumps(jenis_labels),
         'jenis_data': json.dumps(jenis_data),
         'jenis_colors': json.dumps([jenis_colors.get(item['jenis'], '#6c757d') for item in jenis_counts]),
         'kriteria_labels': json.dumps(kriteria_labels),
         'kriteria_data': json.dumps(kriteria_data),
-        'kriteria_dengan_sedikit_dokumen': kriteria_dengan_sedikit_dokumen,
+        'kriteria_dengan_sedikit_dokumen': tabel_dengan_sedikit_dokumen,
     }
     return render(request, 'dokumen/beranda.html', context)
 

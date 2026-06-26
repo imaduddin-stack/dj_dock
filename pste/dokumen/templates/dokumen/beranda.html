@@ -1,5 +1,4 @@
 {% extends "dokumen/base.html" %}
-{% load custom_filters %}
 
 {% block title %}Dashboard Arsip Mutu{% endblock %}
 
@@ -55,70 +54,101 @@
 </div>
 
 <div class="row g-3 mb-4">
-    <div class="col-md-6">
+    <div class="col-lg-3">
         <div class="card h-100">
             <div class="card-header">
-                <span>Distribusi Jenis Dokumen</span>
+                <span class="fs-6">Distribusi Jenis Dokumen</span>
             </div>
-            <div class="card-body">
-                <canvas id="jenisChart" height="300"></canvas>
+            <div class="card-body p-2">
+                <canvas id="jenisChart" height="200"></canvas>
             </div>
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-lg-3">
         <div class="card h-100">
             <div class="card-header">
-                <span>Dokumen per Kriteria</span>
+                <span class="fs-6">Dokumen per Kriteria</span>
             </div>
-            <div class="card-body">
-                <canvas id="kriteriaChart" height="300"></canvas>
+            <div class="card-body p-2">
+                <canvas id="kriteriaChart" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card h-100">
+            <div class="card-header">
+                <span class="fs-6"><i class="fa-solid fa-clock"></i> 10 Dokumen Terbaru</span>
+            </div>
+            <div class="card-body p-0" style="max-height: 400px; overflow-y: auto;">
+                {% if dokumen_terbaru %}
+                <div class="list-group list-group-flush">
+                    {% for dok in dokumen_terbaru %}
+                    <a href="{% if dok.link_gdrive %}{{ dok.link_gdrive }}{% else %}#{% endif %}"
+                       target="_blank" rel="noopener noreferrer"
+                       class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between align-items-start">
+                            <div style="flex: 1;">
+                                <h6 class="mb-1">{{ dok.judul }}</h6>
+                                <small class="text-muted d-block">{{ dok.created_at|date:"d M Y" }}</small>
+                            </div>
+                            <span class="badge {% if dok.jenis == 'kebijakan' %}bg-info{% elif dok.jenis == 'laporan' %}bg-warning text-dark{% elif dok.jenis == 'bukti_kegiatan' %}bg-success{% else %}bg-secondary{% endif %} ms-2">
+                                {{ dok.get_jenis_display }}
+                            </span>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="text-muted p-3 mb-0">Belum ada dokumen.</p>
+                {% endif %}
             </div>
         </div>
     </div>
 </div>
 
-{% if kriteria_dengan_sedikit_dokumen %}
-<div class="card mb-4 border-warning">
-    <div class="card-header bg-warning-subtle">
+<div class="card mb-4">
+    <div class="card-header">
         <div class="d-flex justify-content-between align-items-center">
             <span class="fw-semibold">
-                <i class="fa-solid fa-triangle-exclamation"></i> Kriteria Dengan Dokumen Sedikit
+                <i class="fa-solid fa-chart-bar"></i> Top 10 Tabel LKPS Dengan Dokumen Paling Sedikit
             </span>
-            <span class="badge bg-warning">{{ kriteria_dengan_sedikit_dokumen|length }}</span>
         </div>
     </div>
     <div class="card-body p-0">
+        {% if kriteria_dengan_sedikit_dokumen %}
         <div class="table-responsive">
-            <table class="table table-sm mb-0">
+            <table class="table table-sm table-striped mb-0">
                 <thead class="table-light">
                     <tr>
-                        <th class="ps-3">Kriteria</th>
-                        <th>Nama Kriteria</th>
-                        <th class="text-center">Jumlah Dokumen</th>
-                        <th class="text-center">Progress</th>
+                        <th class="ps-3" style="width: 120px;">Tabel LKPS</th>
+                        <th>Deskripsi</th>
+                        <th class="text-center" style="width: 120px;">Jumlah Dokumen</th>
+                        <th>Progress</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for item in kriteria_dengan_sedikit_dokumen %}
-                    <tr>
+                    <tr class="{% if item.jumlah == 0 %}table-danger{% elif item.jumlah < 3 %}table-warning{% endif %}">
                         <td class="ps-3">
-                            <span class="fw-semibold">{{ item.kriteria.nomor }}</span>
+                            <span class="fw-semibold">{{ item.tabel_referensi }}</span>
                         </td>
-                        <td>{{ item.kriteria.nama }}</td>
+                        <td>
+                            <small>{{ item.deskripsi|truncatewords:12 }}</small>
+                        </td>
                         <td class="text-center">
-                            <span class="badge {% if item.jumlah == 0 %}bg-danger{% else %}bg-warning{% endif %}">
-                                {{ item.jumlah }}
+                            <span class="badge {% if item.jumlah == 0 %}bg-danger{% elif item.jumlah == 1 %}bg-warning{% elif item.jumlah == 2 %}bg-info{% else %}bg-success{% endif %}">
+                                {{ item.jumlah }} dokumen
                             </span>
                         </td>
-                        <td class="text-center">
-                            <div class="progress" style="min-width: 120px;">
-                                <div class="progress-bar {% if item.jumlah == 0 %}bg-danger{% elif item.jumlah == 1 %}bg-warning{% else %}bg-info{% endif %}"
+                        <td>
+                            <div class="progress" style="height: 24px;">
+                                <div class="progress-bar {% if item.jumlah == 0 %}bg-danger{% elif item.jumlah == 1 %}bg-warning{% elif item.jumlah == 2 %}bg-info{% else %}bg-success{% endif %}"
                                      role="progressbar"
-                                     style="width: {{ item.jumlah|multiply:25 }}%"
+                                     style="width: {% widthratio item.jumlah 10 100 %}%"
                                      aria-valuenow="{{ item.jumlah }}"
                                      aria-valuemin="0"
-                                     aria-valuemax="4">
-                                    {{ item.jumlah }}/4
+                                     aria-valuemax="10">
+                                    <small>{{ item.jumlah }}/10</small>
                                 </div>
                             </div>
                         </td>
@@ -127,9 +157,11 @@
                 </tbody>
             </table>
         </div>
+        {% else %}
+        <p class="text-muted p-3 mb-0">Semua tabel LKPS memiliki dokumentasi yang cukup.</p>
+        {% endif %}
     </div>
 </div>
-{% endif %}
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
@@ -144,18 +176,18 @@
                 data: {{ jenis_data|safe }},
                 backgroundColor: jenisColors,
                 borderColor: '#fff',
-                borderWidth: 2,
+                borderWidth: 1,
             }]
         },
         options: {
             responsive: true,
-            maintainAspectRatio: true,
+            maintainAspectRatio: false,
             plugins: {
                 legend: {
                     position: 'bottom',
                     labels: {
-                        padding: 15,
-                        font: { size: 11 }
+                        padding: 8,
+                        font: { size: 10 }
                     }
                 }
             }
@@ -169,17 +201,17 @@
         data: {
             labels: {{ kriteria_labels|safe }},
             datasets: [{
-                label: 'Jumlah Dokumen',
+                label: 'Dokumen',
                 data: {{ kriteria_data|safe }},
                 backgroundColor: '#0d6efd',
                 borderColor: '#0d6efd',
                 borderWidth: 1,
-                borderRadius: 4,
+                borderRadius: 3,
             }]
         },
         options: {
             responsive: true,
-            maintainAspectRatio: true,
+            maintainAspectRatio: false,
             indexAxis: 'y',
             plugins: {
                 legend: {
@@ -190,7 +222,13 @@
                 x: {
                     beginAtZero: true,
                     ticks: {
-                        stepSize: 1
+                        stepSize: 1,
+                        font: { size: 10 }
+                    }
+                },
+                y: {
+                    ticks: {
+                        font: { size: 9 }
                     }
                 }
             }

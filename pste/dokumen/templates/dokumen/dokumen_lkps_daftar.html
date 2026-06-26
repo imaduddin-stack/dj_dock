@@ -3,6 +3,25 @@
 {% block title %}Daftar Dokumen LKPS - Arsip Mutu{% endblock %}
 
 {% block content %}
+<style>
+    .dokumen-table th:nth-child(1),
+    .dokumen-table td:nth-child(1) {
+        width: 20%;
+        word-break: break-word;
+        white-space: normal;
+    }
+    .dokumen-table th:nth-child(3),
+    .dokumen-table td:nth-child(3) {
+        width: 50%;
+        word-break: break-word;
+        white-space: normal;
+        max-height: none;
+    }
+    .dokumen-table td:nth-child(3) small {
+        display: block;
+        white-space: normal;
+    }
+</style>
 <div class="row mb-4">
     <div class="col-12">
         <div class="d-flex justify-content-between align-items-center">
@@ -50,7 +69,7 @@
     {% if dokumen_list %}
     <div class="card-body p-0">
         <div class="table-responsive">
-            <table class="table table-hover table-sm mb-0">
+            <table class="table table-hover table-sm mb-0 dokumen-table">
                 <thead class="table-light">
                     <tr>
                         <th class="ps-3">Judul Dokumen</th>
@@ -77,13 +96,18 @@
                             {% endif %}
                         </td>
                         <td>
-                            <small class="text-muted">{{ dokumen.deskripsi|truncatewords:10 }}</small>
+                            <small class="text-muted">{{ dokumen.deskripsi }}</small>
                         </td>
                         <td class="text-center">
                             {% if dokumen.link_gdrive %}
-                            <a href="{{ dokumen.link_gdrive }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-primary" title="Lihat dokumen">
-                                <i class="fa-solid fa-eye"></i>
-                            </a>
+                            <div class="btn-group btn-group-sm" role="group">
+                                <a href="{{ dokumen.link_gdrive }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary" title="Lihat dokumen">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+                                <button type="button" class="btn btn-outline-secondary copy-link-btn" data-link="{{ dokumen.link_gdrive }}" title="Copy link">
+                                    <i class="fa-solid fa-copy"></i>
+                                </button>
+                            </div>
                             {% else %}
                             <span class="text-muted" title="Tidak ada link"><i class="fa-solid fa-ban"></i></span>
                             {% endif %}
@@ -145,4 +169,26 @@
     </div>
     {% endif %}
 </div>
+
+<script>
+document.querySelectorAll('.copy-link-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const link = this.dataset.link;
+        navigator.clipboard.writeText(link).then(() => {
+            const originalHtml = this.innerHTML;
+            this.innerHTML = '<i class="fa-solid fa-check"></i>';
+            this.classList.remove('btn-outline-secondary');
+            this.classList.add('btn-outline-success');
+            setTimeout(() => {
+                this.innerHTML = originalHtml;
+                this.classList.remove('btn-outline-success');
+                this.classList.add('btn-outline-secondary');
+            }, 2000);
+        }).catch(() => {
+            alert('Gagal menyalin link');
+        });
+    });
+});
+</script>
 {% endblock %}
