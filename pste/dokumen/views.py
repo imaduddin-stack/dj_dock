@@ -65,8 +65,13 @@ def beranda(request):
             'deskripsi': sample_elemen.deskripsi if sample_elemen else '',
         })
 
-    # Urutkan berdasarkan jumlah dokumen (terendah ke tertinggi) dan ambil top 10
-    tabel_dengan_sedikit_dokumen = sorted(tabel_lkps_dengan_dokumentasi, key=lambda x: x['jumlah'])[:10]
+    # Pisahkan item dengan 0 dokumen dan non-zero, lalu urutkan
+    items_with_zero = [x for x in tabel_lkps_dengan_dokumentasi if x['jumlah'] == 0]
+    items_with_nonzero = sorted([x for x in tabel_lkps_dengan_dokumentasi if x['jumlah'] > 0], key=lambda x: x['jumlah'])
+
+    # Ambil items dengan 0 (semua), plus sisa top items untuk total max 10
+    remaining_slots = max(0, 10 - len(items_with_zero))
+    tabel_dengan_sedikit_dokumen = items_with_zero + items_with_nonzero[:remaining_slots]
 
     # Dokumen terbaru (10 dokumen)
     dokumen_terbaru = Dokumen.objects.all().order_by('-created_at')[:10]
